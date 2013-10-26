@@ -34,5 +34,6 @@
             "js": ["contentscript.js"],
             "run_at": "document_start"
         }
-    ]
+    ],
+    "homepage_url": "https://github.com/timothyqiu/direct-access"
 }
