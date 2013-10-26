@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+    "name": "__MSG_extName__",
+    "version": "1.0.0",
+
+    "default_locale": "en",
+    "description": "__MSG_extDescription__",
+    "icons": {
+         "16": "media/icon-16.png",
+         "48": "media/icon-48.png",
+        "128": "media/icon-128.png"
+    },
+
+    "page_action": {
+        "default_icon": {
+            "19": "media/icon-19.png",
+            "38": "media/icon-38.png"
+        },
+        "default_title": "__MSG_gainAccess__",
+        "default_popup": "popup.html"
+    },
+
+    "author": "Timothy Qiu",
+    "background": {
+        "scripts": ["eventpage.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://www.google.com/*",
+                "https://www.google.com/*"
+            ],
+            "js": ["contentscript.js"],
+            "run_at": "document_start"
+        }
+    ]
+}

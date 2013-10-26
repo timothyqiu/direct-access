@@ -1,0 +1,27 @@
+{
+    "extName": {
+        "message": "直接访问",
+        "description": "Extension name."
+    },
+
+    "extDescription": {
+        "message": "直接访问 Google 搜索结果。",
+        "description": "Extension description."
+    },
+
+    "gainAccess": {
+        "message": "搜索结果已可直接访问",
+        "description": "Message displayed when gain direct access."
+    },
+
+    "htmlHeaderStats": {
+        "message": "统计信息",
+        "description": "Header for stats section."
+    },
+
+    "htmlStatsText": {
+        "message": "已在当前页转换 $1 个链接",
+        "description": "Display page stats. $1 will be replaced by actual number of links replaced."
+    }
+
+}

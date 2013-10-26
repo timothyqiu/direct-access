@@ -1,0 +1,27 @@
+{
+    "extName": {
+        "message": "Direct Access",
+        "description": "Extension name."
+    },
+
+    "extDescription": {
+        "message": "Direct access Google Search results.",
+        "description": "Extension description."
+    },
+
+    "gainAccess": {
+        "message": "You are direct accessing the search results",
+        "description": "Message displayed when gain direct access."
+    },
+
+    "htmlHeaderStats": {
+        "message": "Statistics",
+        "description": "Header for stats section."
+    },
+
+    "htmlStatsText": {
+        "message": "Links converted: $1",
+        "description": "Display page stats. $1 will be replaced by actual number of links replaced."
+    }
+
+}
