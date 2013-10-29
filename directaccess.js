@@ -1,4 +1,3 @@
-
 (function() {
 
   "use strict";
@@ -16,12 +15,14 @@
       active: true,
       windowId: chrome.windows.WINDOW_ID_CURRENT
     }, function(tabs) {
-      console.log(tabs);
       if (tabs.length > 0) {
         var currentTab = tabs[0];
         chrome.runtime.getBackgroundPage(function(window) {
           var getStats = window.require['getStats'];
           var count = getStats(currentTab.id);
+          if (typeof count === 'undefined') {
+            count = 0;
+          }
           updateMessages(count);
         });
       }

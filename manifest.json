@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "__MSG_extName__",
-    "version": "1.0.0",
+    "version": "1.0.1",
 
     "default_locale": "en",
     "description": "__MSG_extDescription__",
@@ -34,6 +34,5 @@
             "js": ["contentscript.js"],
             "run_at": "document_start"
         }
-    ],
-    "homepage_url": "https://github.com/timothyqiu/direct-access"
+    ]
 }
