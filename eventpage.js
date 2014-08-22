@@ -17,7 +17,12 @@ var require = {};
     } else {
       chrome.pageAction.hide(id);
     }
-    stats[id] = message.count;
+
+    if (id in stats) {
+      stats[id] += message.count;
+    } else {
+      stats[id] = message.count;
+    }
   });
 
   chrome.tabs.onRemoved.addListener(function (id) {

@@ -3,41 +3,38 @@
   "use strict";
 
   function removeRedirection(element) {
-    var action = element.getAttribute("onmousedown");
-    if (action && (action.indexOf("rwt") > -1)) {
-      element.removeAttribute("onmousedown");
-      return true;
-    }
-    return false;
+      element.removeAttribute('onmousedown');
+
+      // get rid of all event listeners
+      var clone = element.cloneNode(true);
+      element.parentNode.replaceChild(clone, element);
+
+      chrome.runtime.sendMessage({"count": 1});
   }
 
-  function getDirectAccess() {
-    var links = document.querySelectorAll("h3.r a");
-    var len = links.length;
-
-    var count = 0;
-    for (var i = 0; i < len; i++) {
-      if (removeRedirection(links[i])) {
-        count++;
-      }
+  function getDirectAccess(element) {
+    var action = element.getAttribute('onmousedown');
+    if (action && action.indexOf('rwt') > -1) {
+      removeRedirection(element);
     }
-
-    chrome.runtime.sendMessage({"count": count});
   }
 
   var matches = [ "/", "/webhp", "/search" ];
 
   if (matches.indexOf(window.location.pathname) > -1) {
 
-    // Normal search
-    document.addEventListener("DOMContentLoaded", getDirectAccess);
+    document.addEventListener('mouseenter', function (ev) {
+      var element = ev.target;
+      var maxDepth = 1; // e.g. the <em> beneath <a>
 
-    // Instant search
-    document.addEventListener("DOMNodeInserted", function (ev) {
-      if (ev.target.id == 'rhs') {
-        getDirectAccess();
+      for (var i = 0; i < maxDepth && element && element.tagName != 'A'; i++) {
+        element = element.parentNode;
       }
-    });
+
+      if (element && element.tagName == 'A') {
+        getDirectAccess(element);
+      }
+    }, true);
 
   }
 
